@@ -13,7 +13,7 @@ Generic sentence evaluation scripts wrapper
 from __future__ import absolute_import, division, unicode_literals
 
 from senteval import utils
-from senteval.binary import CREval, MREval, MPQAEval, SUBJEval
+from senteval.binary import CREval, MREval, MPQAEval, SUBJEval, FNEval
 from senteval.snli import SNLIEval
 from senteval.trec import TRECEval
 from senteval.sick import SICKRelatednessEval, SICKEntailmentEval
@@ -66,7 +66,7 @@ class SE(object):
         if name == 'CR':
             self.evaluation = CREval(tpath + '/downstream/CR', seed=self.params.seed)
         elif name == 'FN':
-            self.evaluation = MREval(tpath + '/downstream/FN', seed=self.params.seed)
+            self.evaluation = FNEval(tpath + '/downstream/FN', seed=self.params.seed)
         elif name == 'MR':
             self.evaluation = MREval(tpath + '/downstream/MR', seed=self.params.seed)
         elif name == 'MPQA':
