@@ -14,7 +14,7 @@ with io.open('./README.md', encoding='utf-8') as f:
 setup(
     name='SentEval',
     version='0.1.0',
-    url='https://github.com/facebookresearch/SentEval',
+    url='https://github.com/saifkhan-m/SentEval',
     packages=find_packages(exclude=['examples']),
     license='Attribution-NonCommercial 4.0 International',
     long_description=readme,

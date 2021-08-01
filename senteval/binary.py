@@ -16,6 +16,7 @@ import numpy as np
 import logging
 
 from senteval.tools.validation import InnerKFoldClassifier
+from tqdm import tqdm
 
 
 class BinaryClassifierEval(object):
@@ -42,7 +43,7 @@ class BinaryClassifierEval(object):
         sorted_samples = [x for (x, y) in sorted_corpus]
         sorted_labels = [y for (x, y) in sorted_corpus]
         logging.info('Generating sentence embeddings')
-        for ii in range(0, self.n_samples, params.batch_size):
+        for ii in tqdm(range(0, self.n_samples, params.batch_size)):
             batch = sorted_samples[ii:ii + params.batch_size]
             embeddings = batcher(params, batch)
             enc_input.append(embeddings)
