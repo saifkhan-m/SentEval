@@ -23,7 +23,7 @@ assert(sklearn.__version__ >= "0.18.0"), \
     "need to update sklearn to version >= 0.18.0"
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
-
+from tqdm import tqdm
 
 def get_classif_name(classifier_config, usepytorch):
     if not usepytorch:
@@ -64,7 +64,7 @@ class InnerKFoldClassifier(object):
         innerskf = StratifiedKFold(n_splits=self.k, shuffle=True,
                                    random_state=1111)
         count = 0
-        for train_idx, test_idx in skf.split(self.X, self.y):
+        for train_idx, test_idx in tqdm(skf.split(self.X, self.y)):
             count += 1
             X_train, X_test = self.X[train_idx], self.X[test_idx]
             y_train, y_test = self.y[train_idx], self.y[test_idx]
